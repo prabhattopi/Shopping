@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #navbar{
+            display: flex;
+            justify-content: space-around;
+            background-color: lightslategray;
+           padding: 20px;
+        }
+        a{
+            font-size: 20px;
+            text-decoration: none;
+        }
+        #navbar a:hover{
+            background-color: darkgrey;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+    <div><a  target="blank" href="men.html">Men</a></div>
+    <div><a  target="blank" href="women.html">Women</a></div>
+    <div><a  target="blank" href="signup.html">singup</a></div>
+    <div><a  target="blank" href="login.html">Login</a></div>
+    <div><a  target="blank" href="cart.html">Cart Items</a></div>
+
+    </div>
+    <h3></h3>
+    <button><a href="checkout.html" target="blank" rel="noopener noreferrer">Checkout</a></button>
+    <div id="container"></div>
+</body>
+</html>
+<script>
+     var data=JSON.parse(localStorage.getItem("saman"))
+     
+     var total=data.reduce(function(sum,el,i,arr){
+         return sum+Number(el.price)
+     }, 0)
+     var length=data.length
+     console.log(total)
+     document.querySelector("h3").innerText= `The total no of product is ${length} total amout is ${total} only`
+     data.map(function(elem,i,arr){
+        var box = document.createElement("div");
+
+        
+
+var img = document.createElement("img");
+img.src = elem.image_url;
+
+var name = document.createElement("p");
+name.textContent = elem.name;
+
+var price = document.createElement("p");
+price.innerText = elem.price;
+
+var btn=document.createElement("button")
+btn.innerText="Remove"
+btn.style.fontWeight="bold"
+// var btn=document.createElement("button")
+// btn.innerText="Add to cart"
+// btn.style.fontWeight="bold"
+
+// btn.addEventListner
+// btn.addEventListener("click",function(){
+//   element(elem)
+// })
+btn.addEventListener("click",function () {
+    reomove(elem,i)
+    
+})
+
+box.append(img, name, price,btn);
+
+document.querySelector("#container").append(box);
+     })
+
+     function reomove(elem,i){
+         console.log(elem)
+         data.splice(i,1)
+         localStorage.setItem("saman",JSON.stringify(data))
+         window.location.reload()
+     }
+    //  function element(elem){
+    //     //  console.log(elme)
+    //     c
+    //  }
+</script>

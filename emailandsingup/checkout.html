@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Checkout Page</h1>
+    <form action="">
+        <input id="card" type="text" placeholder="enter your card details"><input id="cvv" type="text" placeholder="Enter you cvv"><input id="Expiry" type="text" placeholder="Enter your Card Expiry-date"><input id="otp"  type="text" placeholder="Enter Otp">
+        <input type="submit">
+    </form>
+</body>
+</html>
+<script>
+    document.querySelector("form").addEventListener("submit",Successful)
+    function Successful(){
+        event.preventDefault()
+    var enterd=document.querySelector("#otp").value
+   var ot=[1234,1238,2343,3455,7777,8944,0904,3434,4545,2333,2334,6765,4554,0000,1111,2222,0001]
+   
+
+   
+   var count=0
+   
+   for(var i=0;i<ot.length;i++){
+       if(enterd==ot[i]){
+           count++
+       }
+       
+       
+   }
+   if(count==0){
+       alert("Payment Declined")
+
+   }
+   else if(enterd.length>3){
+
+       alert("Payment Success")
+       window.location.href="Success.html"
+   }
+   
+    // let employess=[
+    //     {name:"john"}
+    // ]
+    }
+</script>

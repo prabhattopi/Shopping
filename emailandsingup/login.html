@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #navbar{
+            display: flex;
+            justify-content: space-around;
+            background-color: lightslategray;
+           padding: 20px;
+        }
+        a{
+            font-size: 20px;
+            text-decoration: none;
+        }
+        #navbar a:hover{
+            background-color: darkgrey;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+    <div><a  target="blank" href="men.html">Men</a></div>
+    <div><a  target="blank" href="women.html">Women</a></div>
+    <div><a  target="blank" href="signup.html">singup</a></div>
+    <div><a  target="blank" href="login.html">Login</a></div>
+    <div><a  target="blank" href="cart.html">Cart Items</a></div>
+
+    </div>
+    <h1>Login page</h1>
+    <form action="">
+        <input id="username"  type="text" placeholder="Enter your username">
+        <input id="Password"  type="text" placeholder="Enter your password">
+        <input type="submit">
+    </form>
+</body>
+</html>
+<script>
+ document.querySelector("form").addEventListener("submit",Log)
+ var logdetails=JSON.parse(localStorage.getItem("Login"))
+ function Log(){
+     event.preventDefault()
+     var userdetails=document.querySelector("#username").value
+     var passdetails=document.querySelector("#Password").value
+     let count=0
+     for(var i=0;i<logdetails.length;i++){
+         if(logdetails[i].user==userdetails && logdetails[i].pass==passdetails){
+             count++
+             
+         }
+        }
+     if(count==0){
+        alert("Worng username or Password")
+     }
+     else{
+         alert("You are logged in")
+     }
+     
+ }
+</script>
